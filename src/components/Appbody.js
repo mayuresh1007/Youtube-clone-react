@@ -1,0 +1,15 @@
+import React from 'react'
+import Sidebar from './Sidebar'
+import Maincontainer from './Maincontainer'
+
+const Appbody = () => {
+  return (
+    <div className='grid grid-flow-col'>
+    <Sidebar/>  
+    <Maincontainer/>
+    </div>
+    
+  )
+}
+
+export default Appbody
