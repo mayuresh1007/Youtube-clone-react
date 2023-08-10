@@ -1,9 +1,18 @@
+import { useDispatch } from "react-redux";
+import { toggleMenu } from "../Utils/Appslice";
+
 const Header = () => {
+  const dispatch = useDispatch();
+
+  const toggleMemuHandle = () => {
+    dispatch(toggleMenu());
+  };
   return (
     <div className="grid grid-flow-col  shadow p-2">
       <div className="flex col-span-1">
         <img
-          className="h-6 mr-4 m-1"
+          onClick={() => toggleMemuHandle()}
+          className="h-6 mr-4 m-1 cursor-pointer"
           src="https://icon-library.com/images/hamburger-menu-icon-png/hamburger-menu-icon-png-11.jpg"
           alt="hamberger"
         />
@@ -14,15 +23,23 @@ const Header = () => {
         />
       </div>
       <div className="flex h-8 justify-center  col-span-10">
-        <input className="rounded-l-full border border-gray-500 w-1/2" type="text" />
+        <input
+          className="rounded-l-full border border-gray-500 w-1/2 p-3"
+          type="text"
+          placeholder="Search"
+        />
         <img
-          className=" px-3 p-1 rounded-r-full border border-gray-500"
+          className=" px-3 p-1 rounded-r-full border border-gray-500 cursor-pointer"
           src="https://icon-library.com/images/search-for-icon/search-for-icon-1.jpg"
           alt=""
         />
       </div>
       <div className="col-span-1">
-        <img className="h-8 justify-end" src="https://icon-library.com/images/user-icon-free/user-icon-free-28.jpg" alt="user" />
+        <img
+          className="h-8 justify-end cursor-pointer"
+          src="https://icon-library.com/images/user-icon-free/user-icon-free-28.jpg"
+          alt="user"
+        />
       </div>
     </div>
   );
