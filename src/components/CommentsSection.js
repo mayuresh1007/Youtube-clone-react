@@ -12,7 +12,7 @@ const CommentsSection = ({ VideoId }) => {
         `https://www.googleapis.com/youtube/v3/commentThreads?key=${API_KEY}&videoId=${VideoId}&part=snippet`
       );
       const data = await response.json();
-      // console.log(data);
+      console.log(data);
       setComments(data.items);
     } catch (error) {
       console.error("Error fetching comments:", error);
@@ -27,7 +27,7 @@ const CommentsSection = ({ VideoId }) => {
           <h1 className="font-semibold">
             {comment.snippet?.topLevelComment?.snippet.authorDisplayName}
           </h1>
-          <ul className="text-sm w-96 truncate">
+          <ul className="text-sm w-96 ">
             <li>{comment.snippet?.topLevelComment?.snippet?.textDisplay}</li>
           </ul>
         </div>

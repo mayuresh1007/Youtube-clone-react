@@ -13,14 +13,12 @@ const appSlice = createSlice({
     closeMenu: (state, action) => {
       state.isMenuOpen = false;
     },
-    searchBtn:(state,action)=>{
+    searchBtnBar:(state,action)=>{
       state.recommendation.replace("trending", action.payload)
     },
-    addItem: (state, action) => {
-      state.items.push(action.payload);
-    },
+    
   },
 });
 
-export const { toggleMenu, closeMenu ,searchBtn} = appSlice.actions;
+export const { toggleMenu, closeMenu ,searchBtnBar} = appSlice.actions;
 export default appSlice.reducer;

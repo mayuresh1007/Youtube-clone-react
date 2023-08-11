@@ -1,3 +1,24 @@
+# debouncing 
+
+- typing speed matters while searching 
+    - slow typing - 200ms
+    - fast typing -30ms
+
+-Performance 
+    -iphone prom max = 14 hits per key press/strocks for 0ne person 
+    14 * 1000 person =14000 
+
+    -With debouncing -  3 api call per person
+    3 * 1000 = 3000
+
+- debounding - for suggestions
+ - if the difference between two key strocks less than 200 ms decline api call
+ - if the difference between two key strocks greater than 200 ms make api call for each key press
+
+- tailwind classes manages well manner
+prettier-plugin-tailwindcss
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

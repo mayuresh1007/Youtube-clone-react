@@ -13,16 +13,17 @@ const VedioContainer = () => {
     const json = await data.json();
     // console.log(json.items);
     setVideos(json.items);
+    console.log(videos);
   };
   return (
     <div className="flex flex-wrap">
-      {videos.map((video) => (
-        // <VideoCard key={video.id} info={video} />
-        <Link to={`/watch?v=${video.id}`}>
-          {" "}
-          <VideoCard key={video.id} info={video} />
-        </Link>
-      ))}
+      {videos &&
+        videos.map((video) => (
+          // <VideoCard key={video.id} info={video} />
+          <Link to={`/watch?v=${video.id}`} key={video.id}>
+            <VideoCard info={video} />
+          </Link>
+        ))}
     </div>
   );
 };

@@ -28,6 +28,7 @@ const WatchPage = () => {
   };
 
   const { snippet, statistics } = videoInfo;
+  // console.log(videoInfo)
 
   return (
     <>
@@ -41,9 +42,9 @@ const WatchPage = () => {
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowFullScreen
         ></iframe>
-        <div className="">
+        <div className="shadow">
           <ul className=" mt-2 ">
-            <li className="font-bold truncate text-lg">{snippet?.title}</li>
+            <li className="font-bold text-lg w-[700px]">{snippet?.title}</li>
             <li className="text font-light ">{snippet?.channelTitle}</li>
             <div className="flex  ">
               <li className=" font-extralight ">
@@ -56,10 +57,18 @@ const WatchPage = () => {
             </div>
           </ul>
         </div>
+
         <hr />
+        <div className="rounded-lg bg-slate-100 p-2 w-[700px]">
+          <h1 className="font-bold">Description</h1>
+          <h1 className="fornt italic text-xs text-ellipsis overflow-hidden h-40">
+            {snippet?.description}
+          </h1>
+        </div>
         <div className="m-1">
           <h1 className="font-bold">{statistics?.commentCount} Comments</h1>
         </div>
+
         <CommentsSection VideoId={VideoId} />
       </div>
       <div>

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { YT_BY_ID, API_KEY } from "../Utils/Constants";
+import { API_KEY } from "../Utils/Constants";
 import { useDispatch, useSelector } from "react-redux";
-import { searchBtn } from "../Utils/Appslice";
+import { searchBtnBar } from "../Utils/Appslice";
 
 const ButtonBar = () => {
   const [inputValue, setInputValue] = useState("trending");
@@ -20,11 +20,10 @@ const ButtonBar = () => {
     "commedy",
     "chatgpt",
     "chandrayan-3",
-    "AI",
   ];
 
   useEffect(() => {
-    dispatch(searchBtn(inputValue));
+    dispatch(searchBtnBar(inputValue));
     getByCategory();
   }, [inputValue]);
 
@@ -54,15 +53,13 @@ const ButtonBar = () => {
     <div className="mt-2 ">
       {buttons.map((button, index) => {
         return (
-          <>
-            <button
-              className="m-1 p-1 px-2 mx-2 bg-slate-200 rounded-md text-xs"
-              key={button}
-              onClick={() => handleButtonClick(button)}
-            >
-              {button}
-            </button>
-          </>
+          <button
+            className="m-1 p-1 px-2 mx-2 bg-slate-200 rounded-md text-xs"
+            key={button}
+            onClick={() => handleButtonClick(button)}
+          >
+            {button}
+          </button>
         );
       })}
     </div>
