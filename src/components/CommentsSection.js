@@ -22,14 +22,27 @@ const CommentsSection = ({ VideoId }) => {
   return (
     <div>
       {comments.map((comment) => (
-        <div key={comment.id} className="m-1 p-1">
-          {/* {console.log(comment.snippet?.topLevelComment?.snippet?.textDisplay)} */}
-          <h1 className="font-semibold">
-            {comment.snippet?.topLevelComment?.snippet.authorDisplayName}
-          </h1>
-          <ul className="text-sm w-96 ">
-            <li>{comment.snippet?.topLevelComment?.snippet?.textDisplay}</li>
-          </ul>
+        <div key={comment.id} className="m-1 p-1 flex">
+          {/* {console.log(
+            comment.snippet?.topLevelComment?.snippet.authorProfileImageUrl
+          )} */}
+          <div className="m-2">
+            <img
+              className="h-5 justify-end cursor-pointer rounded-full"
+              src={
+                comment.snippet?.topLevelComment?.snippet.authorProfileImageUrl
+              }
+              alt="user"
+            />
+          </div>
+          <div className="justify-center">
+            <h1 className="font-semibold">
+              {comment.snippet?.topLevelComment?.snippet.authorDisplayName}
+            </h1>
+            <ul className="text-sm w-96 ">
+              <li>{comment.snippet?.topLevelComment?.snippet?.textDisplay}</li>
+            </ul>
+          </div>
         </div>
       ))}
     </div>

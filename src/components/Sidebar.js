@@ -9,14 +9,37 @@ const Sidebar = () => {
   }
   return (
     <div className="text-sm shadow col-span-1">
-      <div className="m-2 p-2 text-center">
-        <h1 className="font-bold">Home</h1>
-        <ul>
-          <Link to={"/"}> <li>Home</li></Link>
-          <li>Shorts</li>
-          <li>Subscription</li>
-        </ul>
-        <hr className="my-2" />
+      <div className=" p-2  ">
+        <div className="  ">
+          <ul className="flex  flex-col justify-evenly min-h-screen  mx-3 items-center ">
+            <Link to={"/"} className="hover:border border-slate-500">
+              <img
+                className="w-8 justify-center  "
+                src="https://img.icons8.com/?size=512&id=i6fZC6wuprSu&format=png"
+                alt="home"
+              />
+              <li className="">Home</li>
+            </Link>
+            <Link to={"shorts/"} className="hover:border border-slate-500">
+              <img
+                className="w-8 justify-center  "
+                src="https://img.icons8.com/?size=512&id=EIImZoYOHFX6&format=png"
+                alt=""
+              />
+              <li className="">Shorts</li>
+            </Link>
+            <Link to={"/"} className=" hover:border border-slate-500">
+              <img
+                className="w-8 justify-center  "
+                src="https://img.icons8.com/?size=512&id=9qDAqQd4klEv&format=png"
+                alt=""
+              />
+              <li className="">Library</li>
+            </Link>
+          </ul>
+        </div>
+
+        {/* <hr className="my-2" />
         <h1 className="font-bold pt-2">Subscription</h1>
         <ul>
           <li>Home</li>
@@ -39,7 +62,7 @@ const Sidebar = () => {
           <li>News </li>
           <li>Coding</li>
           <li>Sports</li>
-        </ul>
+        </ul> */}
       </div>
     </div>
   );

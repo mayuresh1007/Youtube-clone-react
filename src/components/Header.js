@@ -1,19 +1,28 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { toggleMenu } from "../Utils/Appslice";
 import { useEffect, useState } from "react";
 import { YT_SUGGESTIONS } from "../Utils/Constants";
-import SuggetionSearchCard from "./SuggetionSearchCard";
+import { cacheResults } from "../Utils/SearchSlice";
 
 const Header = () => {
   const [searchQuery, setSerachQuery] = useState("");
   const [searchresults, setSerachresults] = useState([]);
-  const [showSuggetion, setShowSuggetion] = useState(false);
+  const [showSuggetion, setShowSuggetion] = useState(false); // onFocus / onBlur
 
   const dispatch = useDispatch();
+
+  const searchCache = useSelector((store) => store.search);
+
   useEffect(() => {
     //api call
     console.log(searchQuery);
-    const timer = setTimeout(() => getSearchSuggetion(), 200);
+    const timer = setTimeout(() => {
+      if (searchCache[searchQuery]) {
+        setSerachresults(searchCache[searchQuery]);
+      } else {
+        getSearchSuggetion();
+      }
+    }, 200); // debouncing
 
     return () => {
       clearTimeout(timer);
@@ -25,25 +34,37 @@ const Header = () => {
     const data = await fetch(YT_SUGGESTIONS + searchQuery);
     const json = await data.json();
     setSerachresults(json[1]);
-    console.log(json[1]);
+    console.log("apicall", json[1]);
+
+    // update Cashe
+    dispatch(
+      cacheResults({
+        [searchQuery]: json[1],
+        // pass dummy data for testing
+        // iphone:[1,2,3,]
+      })
+    );
   };
+
   const toggleMemuHandle = () => {
     dispatch(toggleMenu());
   };
   return (
-    <div className="grid grid-flow-col shadow p-2">
+    <div className="grid grid-flow-col shadow p-3">
       <div className="flex col-span-1">
         <img
           onClick={() => toggleMemuHandle()}
-          className="h-6 mr-4 m-1 cursor-pointer"
-          src="https://icon-library.com/images/hamburger-menu-icon-png/hamburger-menu-icon-png-11.jpg"
+          className="h-6 mr-4 m-1 cursor-pointer hover:border border-slate-500 "
+          src="https://www.citypng.com/public/uploads/preview/hd-black-menu-burger-icon-transparent-background-31634946207uno2yrzogi.png"
           alt="hamberger"
         />
-        <img
-          className="h-8 w-18"
-          src="https://www.shutterstock.com/image-vector/youtube-logo-social-media-icon-260nw-2310134969.jpg"
-          alt="yt logo"
-        />
+        <a href="/">
+          <img
+            className="h-8 w-18 "
+            src="https://www.shutterstock.com/image-vector/youtube-logo-social-media-icon-260nw-2310134969.jpg"
+            alt="yt logo"
+          />
+        </a>
       </div>
 
       <div className=" col-span-10 px-10  ">
@@ -58,11 +79,6 @@ const Header = () => {
             placeholder="Search"
           />
           <button className="rounded-r-full border h-8 border-gray-500 px-3">
-            {/* <img
-              className=" h-8 w-8 cursor-pointer rounded-r-full border border-gray-500 p-1 "
-              src="https://icon-library.com/images/search-for-icon/search-for-icon-1.jpg"
-              alt=""
-            /> */}
             🔍
           </button>
         </div>
@@ -88,7 +104,7 @@ const Header = () => {
       </div> */}
       <div className="col-span-1">
         <img
-          className="h-8 justify-end cursor-pointer"
+          className="h-7 justify-end cursor-pointer"
           src="https://icon-library.com/images/user-icon-free/user-icon-free-28.jpg"
           alt="user"
         />

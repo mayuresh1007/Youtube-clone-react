@@ -34,18 +34,18 @@ const WatchPage = () => {
     <>
       <div className=" mt-2 ml-16  ">
         <iframe
-          width="700"
-          height="410"
+          width="650"
+          height="350"
           src={"https://www.youtube.com/embed/" + searchParams.get("v")}
           title="YouTube video player"
           frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowFullScreen
         ></iframe>
-        <div className="shadow">
+        <div className=" px-2 w-[650px] rounded">
           <ul className=" mt-2 ">
-            <li className="font-bold text-lg w-[700px]">{snippet?.title}</li>
-            <li className="text font-light ">{snippet?.channelTitle}</li>
+            <li className="font-bold text-lg w-[650px]">{snippet?.title}</li>
+            <li className="text font-semibold ">{snippet?.channelTitle}</li>
             <div className="flex  ">
               <li className=" font-extralight ">
                 {statistics?.viewCount} views
@@ -58,10 +58,10 @@ const WatchPage = () => {
           </ul>
         </div>
 
-        <hr />
-        <div className="rounded-lg bg-slate-100 p-2 w-[700px]">
+        {/* <hr /> */}
+        <div className="rounded-lg bg-gray-100 p-3 w-[650px] ">
           <h1 className="font-bold">Description</h1>
-          <h1 className="fornt italic text-xs text-ellipsis overflow-hidden h-40">
+          <h1 className="fornt italic text-xs text-ellipsis overflow-hidden  max-h-40">
             {snippet?.description}
           </h1>
         </div>

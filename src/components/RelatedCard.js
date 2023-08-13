@@ -1,30 +1,42 @@
-import React from "react";
-import ButtonBar from "./ButtonBar";
+import { timeAgo } from "../Utils/helper";
 
-const RelatedCard = ({results}) => {
-  // console.log(results)
+const RelatedCard = ({ results }) => {
+  console.log(results);
   return (
-    <div className="overflow-x-auto ">
+    <div className="overflow-x-auto ml-5">
       <div>
-        <div className=" w-56 m-2 p-1 shadow rounded-md cursor-pointer">
-          <img
-            // src={thumbnails.medium.url}
-            alt="thumbnail"
-            className="w-24 rounded-md"
-          />
-          <ul className=" m-1">
-            {/* <img src="" alt="" /> */}
-            {/* <li className="font-bold text-sm truncate ">{title}</li>
-            <li className="text font-light ">{channelTitle}</li>
-            <div className="flex text-xs ">
-              <li className=" font-extralight ">{viewCount} views</li>
-              <li className=" font-extralight ml-2 list-disc list-inside ">
-                {" "}
-                {timeAgo(publishedAt)}
-              </li> 
-            </div>*/}
-          </ul>
-        </div>
+        {result.map((item) => (
+          <div
+            key={item.id.videoId}
+            className=" w-48 m-2 p-1 shadow rounded-md cursor-pointer"
+          >
+            <div className="flex  ">
+              <img
+                src={item.snippet.thumbnails.medium.url}
+                alt="thumbnail"
+                className="w-48 rounded-md"
+              />
+              <ul className=" m-1  ">
+                {/* <img src="" alt="" /> */}
+                <li className="font-bold text-sm truncate w-52 ">
+                  {item.snippet.title}
+                </li>
+                <li className="text font-light ">
+                  {item.snippet.channelTitle}
+                </li>
+                <div className="flex text-xs ">
+                  <li className=" font-extralight ">
+                    {item.snippet.viewCount} views
+                  </li>
+                  <li className=" font-extralight ml-2 list-disc list-inside ">
+                    {" "}
+                    {timeAgo(item.snippet.publishedAt)}
+                  </li>
+                </div>
+              </ul>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );

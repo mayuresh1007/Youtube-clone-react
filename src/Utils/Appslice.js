@@ -4,7 +4,6 @@ const appSlice = createSlice({
   name: "app",
   initialState: {
     isMenuOpen: true,
-    recommendation:"trending"
   },
   reducers: {
     toggleMenu: (state, action) => {
@@ -13,12 +12,8 @@ const appSlice = createSlice({
     closeMenu: (state, action) => {
       state.isMenuOpen = false;
     },
-    searchBtnBar:(state,action)=>{
-      state.recommendation.replace("trending", action.payload)
-    },
-    
   },
 });
 
-export const { toggleMenu, closeMenu ,searchBtnBar} = appSlice.actions;
+export const { toggleMenu, closeMenu } = appSlice.actions;
 export default appSlice.reducer;
