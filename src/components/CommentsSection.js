@@ -1,15 +1,19 @@
 import { useEffect, useState } from "react";
-import { YT_BY_ID, API_KEY } from "../Utils/Constants";
+// import { YT_BY_ID, API_KEY } from "../Utils/Constants";
 const CommentsSection = ({ VideoId }) => {
   const [comments, setComments] = useState([]);
   useEffect(() => {
     getComments();
-  }, []);
+  });
+  // useEffect(() => {
+  //   getComments();
+  // }, []);
 
   const getComments = async () => {
     try {
+      
       const response = await fetch(
-        `https://www.googleapis.com/youtube/v3/commentThreads?key=${API_KEY}&videoId=${VideoId}&part=snippet`
+        `https://www.googleapis.com/youtube/v3/commentThreads?key=${process.env.REACT_APP_API_KEY}&videoId=${VideoId}&part=snippet`
       );
       const data = await response.json();
       console.log(data);

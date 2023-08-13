@@ -28,10 +28,11 @@ const Header = () => {
       clearTimeout(timer);
     };
     // after every key strock
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchQuery]);
 
   const getSearchSuggetion = async () => {
-    const data = await fetch(YT_SUGGESTIONS + searchQuery);
+    const data = await fetch(YT_SUGGESTIONS+ process.env.REACT_APP_API_KEY + searchQuery);
     const json = await data.json();
     setSerachresults(json[1]);
     console.log("apicall", json[1]);

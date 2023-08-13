@@ -5,7 +5,11 @@ const ShortsPage = () => {
   useEffect(() => {
     getVideos();
     getshorts();
-  }, []);
+  });
+  // useEffect(() => {
+  //   getVideos();
+  //   getshorts();
+  // }, []);
   const getVideos = async () => {
     const data = await fetch(YT_VIDEO_URL);
     const json = await data.json();
@@ -25,7 +29,7 @@ const ShortsPage = () => {
   return (
     <div className="col-span-11 flex">
       <div className="justify-center ml-80 my-2 ">
-        {videos.map((video) => {
+        {videos.map((video) => (
           <iframe
             key={videos.id}
             className="rounded-3xl h-full"
@@ -36,8 +40,8 @@ const ShortsPage = () => {
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowFullScreen
-          ></iframe>;
-        })}
+          ></iframe>
+        ))}
         <iframe
           key={videos.id}
           className="rounded-3xl h-full"
@@ -67,8 +71,8 @@ const ShortsPage = () => {
 
 export default ShortsPage;
 
-{
-  /* <Link to={`/watch?v=${video.id}`} key={video.id}>
-            <VideoCard info={video} />
-          </Link> */
-}
+// {
+//   /* <Link to={`/watch?v=${video.id}`} key={video.id}>
+//             <VideoCard info={video} />
+//           </Link> */
+// }

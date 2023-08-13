@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { closeMenu } from "../Utils/Appslice";
 import { useSearchParams } from "react-router-dom";
-import { YT_BY_ID, API_KEY } from "../Utils/Constants";
+import { YT_BY_ID} from "../Utils/Constants";
 import { timeAgo } from "../Utils/helper";
 import CommentsSection from "./CommentsSection";
 import WatchSider from "./WatchSider";
@@ -15,13 +15,15 @@ const WatchPage = () => {
 
   const [videoInfo, setVideoInfo] = useState([]);
 
+  
   useEffect(() => {
     dispatch(closeMenu());
     getVideoInfo();
+  //eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const getVideoInfo = async () => {
-    const data = await fetch(YT_BY_ID + VideoId + "&key=" + API_KEY);
+    const data = await fetch(YT_BY_ID + VideoId + "&key=" + process.env.REACT_APP_API_KEY);
     const json = await data.json();
     // console.log(json);
     setVideoInfo(json.items[0]);
