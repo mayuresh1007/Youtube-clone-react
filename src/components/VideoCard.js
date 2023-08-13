@@ -5,7 +5,7 @@ const VideoCard = ({ info }) => {
 
   const { snippet, statistics } = info;
   const { channelTitle, thumbnails, title, publishedAt } = snippet;
-  const { viewCount, likeCount } = statistics;
+  const { viewCount } = statistics; //likeCount
 
   return (
     <div className=" w-60 m-2 p-1 shadow rounded-md cursor-pointer">
@@ -20,7 +20,10 @@ const VideoCard = ({ info }) => {
         <li className="text font-light ">{channelTitle}</li>
         <div className="flex text-xs ">
           <li className=" font-extralight ">{viewCount} views</li>
-          <li className=" font-extralight ml-2 list-disc list-inside "> {timeAgo(publishedAt)}</li>
+          <li className=" font-extralight ml-2 list-disc list-inside ">
+            {" "}
+            {timeAgo(publishedAt)}
+          </li>
         </div>
       </ul>
     </div>

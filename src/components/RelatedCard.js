@@ -5,7 +5,7 @@ const RelatedCard = ({ results }) => {
   return (
     <div className="overflow-x-auto ml-5">
       <div>
-        {result.map((item) => (
+        {results.map((item) => (
           <div
             key={item.id.videoId}
             className=" w-48 m-2 p-1 shadow rounded-md cursor-pointer"
