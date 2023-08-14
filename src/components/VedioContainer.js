@@ -11,7 +11,6 @@ const VedioContainer = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const getVideos = async () => {
-    console.log(process.env.REACT_APP_API_KEY)
     const data = await fetch(YT_VIDEO_URL + process.env.REACT_APP_API_KEY);
     const json = await data.json();
     // console.log(json.items);
