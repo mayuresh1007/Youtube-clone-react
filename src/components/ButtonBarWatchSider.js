@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
-
 import { useDispatch } from "react-redux";
 import { searchBtnBar } from "../Utils/SearchSlice";
+import RelatedCard from "./RelatedCard";
 
-const ButtonBar = () => {
+const ButtonBarWatchSider = () => {
   const [inputValue, setInputValue] = useState("trending");
   const [result, setResult] = useState([]);
-  // const searchBtn = useSelector((store) => store.app.searchBtn);
   const dispatch = useDispatch();
 
   const buttons = [
@@ -31,7 +30,7 @@ const ButtonBar = () => {
   const getByCategory = async () => {
     try {
       const response = await fetch(
-        `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=${inputValue}&key=${process.env.REACT_APP_API_KEY}`
+        `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=15&q=${inputValue}&key=${process.env.REACT_APP_API_KEY}`
       );
 
       const data = await response.json();
@@ -66,12 +65,12 @@ const ButtonBar = () => {
           );
         })}
       </div>
-      {/* {result && <RelatedCard results={result} />} */}
+      {result && <RelatedCard results={result} />}
     </>
   );
 };
 
-export default ButtonBar;
+export default ButtonBarWatchSider;
 
 //["All", "Live", "Music", "trending", "AI", "Motivation","Coding","All", "Live", "Music", "trending", "AI"];
 

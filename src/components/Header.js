@@ -22,6 +22,7 @@ const Header = () => {
       } else {
         getSearchSuggetion();
       }
+      
     }, 200); // debouncing
 
     return () => {

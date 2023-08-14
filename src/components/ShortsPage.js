@@ -5,11 +5,8 @@ const ShortsPage = () => {
   useEffect(() => {
     getVideos();
     getshorts();
-  });
-  // useEffect(() => {
-  //   getVideos();
-  //   getshorts();
-  // }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   const getVideos = async () => {
     const data = await fetch(YT_VIDEO_URL + process.env.REACT_APP_APPI_KEY);
     const json = await data.json();
@@ -18,7 +15,7 @@ const ShortsPage = () => {
     console.log(videos);
   };
   const getshorts = async () => {
-    if (videos == true) {
+    if (videos === true) {
       const data = await fetch(
         "https://yt.lemnoslife.com/videos?part=short&id=" + videos.id
         //   "https://yt.lemnoslife.com/videos?part=short&id=SCBH4gqZy8s"

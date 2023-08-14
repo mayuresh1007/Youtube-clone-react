@@ -1,9 +1,10 @@
-// import ButtonBar from "./ButtonBar"
+
+import ButtonBarMain from "./ButtonBarMain"
 import VedioContainer from "./VedioContainer"
 const Maincontainer = () => {
   return (
     <div className='col-span-11'>
-    {/* <ButtonBar/> */}
+    <ButtonBarMain/>
     <VedioContainer/>
     </div>
   )

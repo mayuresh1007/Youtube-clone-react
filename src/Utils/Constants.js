@@ -3,7 +3,7 @@ export const YT_VIDEO_URL = `https://youtube.googleapis.com/youtube/v3/videos?pa
 export const YT_BY_ID =
   "https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=";
 
-export const SUGGESTIONS = `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=anything&key=`;
+export const SUGGESTIONS = `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=anything&key=gpt`;
 
 export const YT_SUGGESTIONS =
   "http://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=";

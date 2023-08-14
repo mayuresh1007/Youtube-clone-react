@@ -1,5 +1,5 @@
 // import RelatedCard from "./RelatedCard";
-import ButtonBar from "./ButtonBar";
+import ButtonBar from "./ButtonBarWatchSider";
 
 const WatchSider = () => {
   return (

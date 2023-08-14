@@ -13,7 +13,7 @@ const VedioContainer = () => {
   const getVideos = async () => {
     const data = await fetch(YT_VIDEO_URL + process.env.REACT_APP_API_KEY);
     const json = await data.json();
-    // console.log(json.items);
+    console.log(json.items);
     setVideos(json.items);
     console.log(videos);
   };

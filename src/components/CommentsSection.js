@@ -2,12 +2,11 @@ import { useEffect, useState } from "react";
 // import { YT_BY_ID, API_KEY } from "../Utils/Constants";
 const CommentsSection = ({ VideoId }) => {
   const [comments, setComments] = useState([]);
+ 
   useEffect(() => {
     getComments();
-  });
-  // useEffect(() => {
-  //   getComments();
-  // }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const getComments = async () => {
     try {
