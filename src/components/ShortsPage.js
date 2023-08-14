@@ -11,37 +11,40 @@ const ShortsPage = () => {
   //   getshorts();
   // }, []);
   const getVideos = async () => {
-    const data = await fetch(YT_VIDEO_URL);
+    const data = await fetch(YT_VIDEO_URL + process.env.REACT_APP_APPI_KEY);
     const json = await data.json();
     // console.log(json.items);
     setVideos(json.items);
     console.log(videos);
   };
   const getshorts = async () => {
-    const data = await fetch(
-      "https://yt.lemnoslife.com/videos?part=short&id=" + videos.id
-      //   "https://yt.lemnoslife.com/videos?part=short&id=SCBH4gqZy8s"
-    );
-    // const data = await fetch("https://www.youtube.com/shorts/SCBH4gqZy8s");
-    const json = await data.json();
-    console.log(json);
+    if (videos == true) {
+      const data = await fetch(
+        "https://yt.lemnoslife.com/videos?part=short&id=" + videos.id
+        //   "https://yt.lemnoslife.com/videos?part=short&id=SCBH4gqZy8s"
+      );
+      // const data = await fetch("https://www.youtube.com/shorts/SCBH4gqZy8s");
+      const json = await data.json();
+      console.log(json);
+    }
   };
   return (
     <div className="col-span-11 flex">
       <div className="justify-center ml-80 my-2 ">
-        {videos.map((video) => (
-          <iframe
-            key={videos.id}
-            className="rounded-3xl h-full"
-            width="320"
-            height="560"
-            src="https://www.youtube.com/embed/SCBH4gqZy8s"
-            title="How Fogg (the deodorant) used a Simple Marketing Strategy to beat brand AXE?"
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowFullScreen
-          ></iframe>
-        ))}
+        {videos &&
+          videos.map((video) => (
+            <iframe
+              key={videos.id}
+              className="rounded-3xl h-full"
+              width="320"
+              height="560"
+              src="https://www.youtube.com/embed/SCBH4gqZy8s"
+              title="How Fogg (the deodorant) used a Simple Marketing Strategy to beat brand AXE?"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+            ></iframe>
+          ))}
         <iframe
           key={videos.id}
           className="rounded-3xl h-full"
